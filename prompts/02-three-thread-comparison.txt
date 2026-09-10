@@ -1,8 +1,8 @@
-Create three separate tasks for a comparison: "LOW | My test", "MED | My test" and "HIGH | My test". Use GPT-6 Astra at low, medium and high reasoning effort respectively, if supported here. Keep the speed setting identical. Verify and report the effective model and effort; labels alone are not enough.
+Crie três tarefas separadas para comparação: "LOW | Meu teste", "MED | Meu teste" e "HIGH | Meu teste". Use GPT-6 Astra com esforço de raciocínio low, medium e high, respectivamente, se houver suporte neste ambiente. Mantenha a mesma configuração de velocidade. Verifique e informe o modelo e o esforço efetivos; os rótulos, sozinhos, não bastam.
 
-Give all three the identical assignment below in fresh isolated folders. Do not include other runs or their outputs. Keep discretionary delegation disabled. Give each up to [TIME LIMIT] for a first attempt. Preserve its output before any follow-up. Record completed work, missing requirements, blockers, elapsed time and attributable usage when available.
+Dê às três a mesma tarefa abaixo, em pastas novas e isoladas. Não inclua outras execuções nem suas saídas. Mantenha desativada a delegação opcional. Dê a cada uma até [LIMITE DE TEMPO] para a primeira tentativa. Preserve a saída antes de qualquer acompanhamento. Registre trabalho concluído, requisitos faltantes, bloqueios, tempo decorrido e uso atribuível à tarefa, quando disponível.
 
-Run in parallel only if their tools and workspaces are isolated; serialize any shared computer-control workflow. Monitor progress without coaching. If this environment cannot create tasks or set their effort, tell me precisely which step I must do manually. Never silently substitute settings.
+Execute em paralelo somente se ferramentas e espaços de trabalho estiverem isolados; execute em sequência qualquer fluxo que compartilhe o controle do computador. Acompanhe o progresso sem orientar os participantes. Se este ambiente não puder criar tarefas ou configurar o esforço, diga exatamente qual etapa devo realizar manualmente. Nunca substitua configurações silenciosamente.
 
-ASSIGNMENT:
-[PASTE ONE FROZEN ASSIGNMENT]
+TAREFA:
+[COLE UMA ÚNICA VERSÃO FIXA DA TAREFA]

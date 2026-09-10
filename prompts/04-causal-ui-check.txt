@@ -1,10 +1,10 @@
-Review the finished prototype without editing its source first. Use a fresh or reset sample state and record the starting state.
+Revise o protótipo concluído sem editar seu código-fonte primeiro. Use dados de exemplo novos ou restaurados e registre o estado inicial.
 
-1. Change a meaningful input or select a different option.
-2. Predict which total, record or downstream summary should change.
-3. Complete the main workflow.
-4. Compare the final output with the choice actually made.
-5. Refresh and verify persistence.
-6. Check one invalid input and one unrelated record.
+1. Altere uma entrada relevante ou selecione outra opção.
+2. Preveja qual total, registro ou resumo posterior deve mudar.
+3. Conclua o fluxo principal.
+4. Compare a saída final com a escolha realmente feita.
+5. Recarregue a página e verifique a persistência.
+6. Verifique uma entrada inválida e um registro não relacionado.
 
-Capture receipts for each result. Separate tested behavior, source-code inspection and unverified behavior. Preserve the first-attempt artifact before proposing fixes. A working button or attractive screenshot is not sufficient evidence that the decision flows through.
+Capture evidências de cada resultado. Separe comportamento testado, inspeção de código e comportamento não verificado. Preserve o artefato da primeira tentativa antes de propor correções. Um botão funcionando ou uma captura de tela bonita não bastam para provar que a decisão foi propagada pelo fluxo.

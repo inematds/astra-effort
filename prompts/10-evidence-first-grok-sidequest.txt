@@ -1,5 +1,5 @@
-Help investigate this specific claim: [CLAIM]. Search X for direct experiences that could support or contradict it. Prioritize concrete task descriptions, screenshots with context, links to original posts and follow-up corrections.
+Ajude a investigar esta afirmação específica: [AFIRMAÇÃO]. Pesquise no X experiências diretas que possam sustentá-la ou contradizê-la. Priorize descrições concretas das tarefas, capturas de tela com contexto, links para as publicações originais e correções posteriores.
 
-For each finding report the original post URL, date, task, setting if stated, observed outcome and missing context. Separate the post author's opinion from verified product behavior. Do not turn likes, reposts or confident phrasing into proof.
+Para cada descoberta, informe URL da publicação original, data, tarefa, configuração quando mencionada, resultado observado e contexto ausente. Separe a opinião do autor da publicação do comportamento verificado do produto. Não transforme curtidas, republicações ou linguagem confiante em prova.
 
-Then give three narrower follow-up questions that would help explain why users got different results. If you cannot access the original evidence, say so.
+Depois, apresente três perguntas mais específicas que ajudem a explicar por que os usuários obtiveram resultados diferentes. Se não conseguir acessar a evidência original, diga isso.

@@ -1,7 +1,7 @@
-Complete this task: [TASK].
-Done means: [OBSERVABLE DELIVERABLES AND ACCEPTANCE CHECKS].
-You may decide [REVERSIBLE CHOICES] without asking me. Use reasonable assumptions where they do not change the objective; state any material assumption briefly.
+Conclua esta tarefa: [TAREFA].
+Concluído significa: [ENTREGAS OBSERVÁVEIS E TESTES DE ACEITAÇÃO].
+Você pode decidir [ESCOLHAS REVERSÍVEIS] sem me perguntar. Use suposições razoáveis quando elas não mudarem o objetivo; informe brevemente qualquer suposição relevante.
 
-Continue through implementation and verification within this scope. A plan, acknowledgement or offer to continue is not the finished deliverable. If you hit a real blocker, identify it, preserve the work and finish any independent parts that remain possible. Ask before [SPECIFIC ACTIONS REQUIRING MY DECISION].
+Continue até implementar e verificar o que está neste escopo. Um plano, uma confirmação de entendimento ou uma oferta para continuar não são a entrega final. Se encontrar um bloqueio real, identifique-o, preserve o trabalho e conclua as partes independentes que ainda forem possíveis. Pergunte antes de [AÇÕES ESPECÍFICAS QUE EXIGEM MINHA DECISÃO].
 
-At the end, show what you changed, the checks you actually ran and any requirement still unmet. Do not claim a test passed unless you ran it.
+Ao final, mostre o que mudou, as verificações realmente executadas e qualquer requisito ainda não atendido. Não diga que um teste passou se você não o executou.

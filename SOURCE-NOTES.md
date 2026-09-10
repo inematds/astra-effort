@@ -1,82 +1,82 @@
-# Astra super-guide: eight useful additions
+# Astra Effort — oito complementos úteis
 
-Research lock: 8 September 2026. Official pages fetched live through OpenAI Docs. Prompts below are original practical adaptations, not vendor quotations. These are documented capabilities and suggested workflows, not extra experiments secretly added to the video's seven runs.
+Data de referência: 8 de setembro de 2026. O autor consultou as páginas oficiais pela documentação da OpenAI. Os prompts abaixo são adaptações práticas originais, não citações do fornecedor. São capacidades documentadas na pesquisa original e sugestões de fluxo, não experimentos adicionais às sete execuções do vídeo. Esta tradução não atualiza nem revalida a documentação citada.
 
-## 1. Diagnose the stop before buying more reasoning
+## 1. Diagnostique a parada antes de buscar mais raciocínio
 
-**The nugget:** If Astra pauses unnecessarily, ask which instruction caused the pause. Its official guide explicitly describes sensitivity to skills and AGENTS.md, and recommends exposing the exact blocking instruction. This makes an apparently vague “lazy model” problem inspectable.
+**Ideia principal:** se Astra pausar sem necessidade, pergunte qual instrução causou a pausa. O guia oficial citado descreve sensibilidade a skills e `AGENTS.md` e recomenda explicitar a instrução que bloqueia o trabalho. Isso torna inspecionável um problema aparentemente vago de “modelo preguiçoso”.
 
-**Use when:** It keeps offering to continue, asking for permission on work you already requested, or returning a plan instead of the result.
-
-```text
-Finish the requested result using the scope we've already agreed. Make reasonable assumptions for reversible details and tell me the important ones. If you're blocked, identify the exact missing fact or the exact instruction and file causing the stop. Complete the independent work you can do before asking me. Finish by checking the deliverables against my request.
-```
-
-**Boundary:** Extra reasoning is not documented as a cure for early stopping. This is a behavior/prompt intervention; it does not bypass real permissions. Avoid using “never ask me anything.”
-
-Source: [Astra prompting guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#instruction-following).
-
-## 2. Test the branch, not the screenshot
-
-**The nugget:** A prototype can look complete while ignoring a user's choice. In the producer check, Sol's app let us select “Split with Crew 1,” but its next screen still described moving Fernbank with Crew 2. That is a better quality test than counting canvas elements.
-
-**Use when:** Reviewing anything with approvals, prices, scheduling, filters or saved preferences.
+**Quando usar:** ele oferece continuar repetidamente, pede autorização para trabalho já solicitado ou devolve um plano em vez do resultado.
 
 ```text
-Use the app as a customer. Pick a non-default option, change a meaningful number, and follow the workflow to the final result. Show that the choice and number actually change the result. Reload and check what persisted. Try one invalid input too. Report the exact input, expected result and observed result. Fix any failures, then repeat only the affected checks.
+Conclua o resultado solicitado usando o escopo que já combinamos. Faça suposições razoáveis para detalhes reversíveis e informe as importantes. Se estiver bloqueado, identifique o fato exato ausente ou a instrução exata e o arquivo que causam a parada. Conclua o trabalho independente possível antes de me perguntar. Termine conferindo as entregas contra meu pedido.
 ```
 
-**Boundary:** This is a recommended verification pattern supported by one preserved producer finding. It is not proof that Sol always fails or Astra always passes. Official computer-use guidance says to inspect actual application outcomes, rather than trust the agent's final answer.
+**Limite:** raciocínio adicional não está documentado como solução para paradas precoces. Esta intervenção muda instruções e comportamento; não contorna permissões reais. Evite “nunca me pergunte nada”.
 
-Sources: `evidence/PRODUCER-CHECKS.md`, Sol section; [Computer use: verify the result](https://developers.openai.com/api/docs/guides/tools-computer-use#5-continue-and-verify-the-result).
+Fonte: [Orientações de prompts para Astra](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#instruction-following).
 
-## 3. A 272K threshold is a request boundary, not a token budget for the whole project
+## 2. Teste o caminho da decisão, não apenas a captura de tela
 
-**The nugget:** For Astra API prompts above 272,000 input tokens, the entire request uses 2× input/cache rates and 1.5× output rates. It is not just the excess tokens, and it is not a simple “everything doubles.” A task processing millions of tokens over repeated calls has not necessarily crossed that boundary on any individual call.
+**Ideia principal:** um protótipo pode parecer completo enquanto ignora uma escolha do usuário. Na verificação do produtor, o aplicativo de Sol permitiu selecionar “Split with Crew 1”, mas a próxima tela ainda descrevia mover Fernbank com Crew 2. Esse é um teste de qualidade melhor que contar elementos de um quadro.
 
-**Use when:** Running long API workflows, or investigating a claim that changing a Codex context setting will halve subscription usage.
+**Quando usar:** ao revisar aprovações, preços, agendamentos, filtros ou preferências salvas.
 
 ```text
-Audit this workflow's context and billing settings without changing them. Identify whether it uses ChatGPT sign-in or API billing. For API calls, report the largest individual input-token count and whether any request exceeded Astra's 272,000-input-token threshold. Separate this from cumulative tokens across the task. If you recommend compaction or a configuration change, show the supported setting, current value and proposed diff first.
+Use o aplicativo como um cliente. Escolha uma opção diferente da padrão, altere um número relevante e siga o fluxo até o resultado final. Mostre que a escolha e o número realmente mudam o resultado. Recarregue e confira o que persistiu. Experimente também uma entrada inválida. Informe entrada exata, resultado esperado e resultado observado. Corrija falhas e repita somente as verificações afetadas.
 ```
 
-**Boundary:** The API threshold does not establish an equivalent Codex subscription discount. Do not supply a universal TOML edit without checking the installed client's supported settings. Compaction also trades retained detail for smaller context.
+**Limite:** é um padrão de verificação recomendado e apoiado por uma descoberta preservada do produtor. Não prova que Sol sempre falha ou que Astra sempre passa. A orientação oficial de uso do computador recomenda examinar os resultados reais do aplicativo em vez de confiar na resposta final do agente.
 
-Source: [Astra model pricing notes](https://developers.openai.com/api/docs/models/gpt-6-astra).
+Fontes: seção Sol de [evidence/PRODUCER-CHECKS.md](evidence/PRODUCER-CHECKS.md); [Uso do computador: verificar o resultado](https://developers.openai.com/api/docs/guides/tools-computer-use#5-continue-and-verify-the-result).
 
-## 4. “Fast” and “Medium” are separate decisions
+## 3. O limiar de 272 mil vale por requisição, não como orçamento do projeto inteiro
 
-**The nugget:** With ChatGPT sign-in, Astra Fast mode consumes credits at 2.5× the Standard rate where available. That is a credit multiplier, not a promise that Astra completes tasks 2.5× faster. The speed page's 1.5× speed statement explicitly names other model families. The API has its own rate structure: Astra Fast is 2× applicable API token rates.
+**Ideia principal:** segundo as notas consultadas pelo autor, prompts da API Astra acima de 272.000 tokens de entrada usam, na requisição inteira, tarifas de entrada/cache de 2× e saída de 1,5×. Não é apenas o excedente, nem simplesmente “tudo dobra”. Uma tarefa que processa milhões de tokens em chamadas repetidas pode não cruzar esse limite em nenhuma chamada individual.
 
-**Use when:** You like Medium's output but want to choose whether faster iteration is worth extra allowance.
+**Quando usar:** em fluxos longos de API ou para investigar a afirmação de que mudar uma configuração de contexto do Codex reduzirá pela metade o uso da assinatura.
 
 ```text
-Inspect my current model, reasoning effort, speed mode and sign-in method. Explain the applicable usage tradeoff using current official documentation. Keep reasoning effort unchanged. Show me how to switch only speed mode so I can compare one representative task on Standard and Fast.
+Audite as configurações de contexto e cobrança deste fluxo sem alterá-las. Identifique se ele usa login do ChatGPT ou cobrança de API. Para chamadas de API, informe a maior contagem individual de tokens de entrada e se alguma requisição ultrapassou o limiar de 272.000 tokens de entrada do Astra. Separe isso do total acumulado da tarefa. Se recomendar compactação ou alteração de configuração, mostre primeiro a opção suportada, o valor atual e o diff proposto.
 ```
 
-Codex CLI has `/fast status`, `/fast off`, and `/fast on` for inspecting and changing this setting.
+**Limite:** o limiar da API não estabelece desconto equivalente na assinatura do Codex. Não forneça uma edição universal de TOML sem conferir as opções suportadas pelo cliente instalado. Compactar também troca detalhes retidos por contexto menor.
 
-**Boundary:** Mark's preference for Medium + Fast is a workflow preference. The seven-run table does not measure a Standard-versus-Fast experiment or actual credit spending.
+Fonte: [Notas de preços do modelo Astra](https://developers.openai.com/api/docs/models/gpt-6-astra).
 
-Sources: [Codex speed](https://learn.chatgpt.com/docs/agent-configuration/speed); [Astra API model](https://developers.openai.com/api/docs/models/gpt-6-astra).
+## 4. Fast e Medium são decisões separadas
 
-## 5. Millions of processed tokens can mostly be reread context
+**Ideia principal:** com login do ChatGPT, o modo Astra Fast consome créditos à taxa de 2,5× Standard onde disponível, segundo a pesquisa original. É um multiplicador de créditos, não uma promessa de terminar tarefas 2,5 vezes mais rápido. A afirmação de velocidade de 1,5× na página citada nomeia explicitamente outras famílias de modelos. A API tem tarifas próprias: Astra Fast usa 2× as tarifas aplicáveis por token.
 
-**The nugget:** Cached input and reasoning output are subsets of the counters, not extra categories to add twice. The video's cumulative totals include repeated cached input; Ultra also includes its three subagents. They describe processed work, not fresh words generated or a bill.
-
-**Use when:** Comparing agent runs or trying to explain why a short answer used a large token total.
+**Quando usar:** você gosta da saída de Medium, mas quer decidir se iterar mais rápido vale o consumo extra da franquia.
 
 ```text
-Audit these run logs. Report ordinary input, cached input, cache-write input if available, output and reasoning-output subsets. Reconcile the totals without double-counting subsets. Include child agents exactly once. Keep processed tokens, actual credits charged and API dollar cost separate. If actual billing data is missing, mark cost unavailable rather than estimating it from total tokens alone.
+Inspecione meu modelo atual, esforço de raciocínio, modo de velocidade e forma de autenticação. Explique a relação de uso aplicável usando a documentação oficial atual. Mantenha o esforço de raciocínio inalterado. Mostre como mudar somente a velocidade para comparar uma tarefa representativa em Standard e Fast.
 ```
 
-**Boundary:** API caching has its own write/read prices and conditions. Preserve the raw usage fields; do not infer a precise bill from a screenshot or the final answer's word count.
+O guia cita `/fast status`, `/fast off` e `/fast on` no Codex CLI para consultar e alterar essa opção.
 
-Sources: [Prompt caching measurement](https://developers.openai.com/api/docs/guides/prompt-caching); `evidence/results.json` and `PRODUCER-REVIEW.md`.
+**Limite:** a preferência de Mark por Medium + Fast é uma preferência de fluxo. A tabela das sete execuções não mede um experimento Standard versus Fast nem o gasto real de créditos.
 
-## 6. Raise effort for the difficult phase without breaking the API cache
+Fontes: [Velocidade no Codex](https://learn.chatgpt.com/docs/agent-configuration/speed); [Modelo Astra na API](https://developers.openai.com/api/docs/models/gpt-6-astra).
 
-**The nugget:** Astra's Responses API supports a `configuration_update` input item that changes reasoning effort while keeping the original request-level setting and cached prefix. You can draft at low, then raise effort for failure analysis in the same conversation.
+## 5. Milhões de tokens processados podem ser, em grande parte, contexto relido
+
+**Ideia principal:** entrada em cache e saída de raciocínio são subconjuntos dos contadores, não categorias extras a somar duas vezes. Os totais acumulados do vídeo incluem entrada em cache repetida; Ultra inclui também seus três subagentes. Descrevem trabalho processado, não palavras novas geradas nem uma cobrança.
+
+**Quando usar:** ao comparar execuções ou tentar explicar por que uma resposta curta apresentou um total alto de tokens.
+
+```text
+Audite estes registros de execução. Informe entrada comum, entrada em cache, gravação de cache quando disponível, saída e subconjuntos de saída de raciocínio. Concilie os totais sem duplicar subconjuntos. Inclua agentes filhos exatamente uma vez. Separe tokens processados, créditos realmente cobrados e custo financeiro de API. Se faltarem dados reais de cobrança, marque o custo como indisponível em vez de estimá-lo apenas pelo total de tokens.
+```
+
+**Limite:** cache na API tem condições e preços próprios de leitura e gravação. Preserve os campos brutos de uso; não deduza uma conta exata a partir de uma captura ou da quantidade de palavras da resposta final.
+
+Fontes: [Medição de cache de prompts](https://developers.openai.com/api/docs/guides/prompt-caching); [evidence/results.json](evidence/results.json) e [verificações do produtor](evidence/PRODUCER-CHECKS.md). No original, esta última referência aparece como `PRODUCER-REVIEW.md`; nesta distribuição o arquivo se chama `PRODUCER-CHECKS.md`.
+
+## 6. Aumente o esforço na fase difícil sem quebrar o cache da API
+
+**Ideia principal:** o original descreve um item de entrada `configuration_update` na Responses API do Astra que muda o esforço mantendo a configuração original da requisição e seu prefixo em cache. É possível rascunhar em low e aumentar o esforço para analisar falhas na mesma conversa.
 
 ```json
 {
@@ -85,43 +85,42 @@ Sources: [Prompt caching measurement](https://developers.openai.com/api/docs/gui
 }
 ```
 
-Place it before the next user message; keep request-level `reasoning.effort` at its original value.
+Coloque-o antes da próxima mensagem do usuário; mantenha o `reasoning.effort` da requisição no valor original.
 
 ```text
-Review the proposed migration for data-loss scenarios, concurrency failures and rollback gaps. For each material risk, point to the relevant part of the plan and propose a concrete check or change. Keep the already agreed scope.
+Revise a migração proposta em busca de cenários de perda de dados, falhas de concorrência e lacunas de reversão. Para cada risco relevante, aponte a parte correspondente do plano e proponha uma verificação ou alteração concreta. Mantenha o escopo já combinado.
 ```
 
-**Boundary:** API developer feature, not a Codex-chat magic phrase. Supported for Astra in standard single-agent mode. The update persists until overridden. The response's `reasoning.effort` field still reports the request-level setting, so it is insufficient by itself to audit effective effort. After compaction, add a fresh desired update. Do not claim this makes an independent clean-room comparison; history is deliberately shared.
+**Limite:** recurso de desenvolvimento da API, não uma frase mágica em uma conversa do Codex. O suporte descrito é para Astra em modo padrão de agente único. A atualização persiste até ser substituída. O campo `reasoning.effort` da resposta continua informando a configuração da requisição e, sozinho, não basta para auditar o esforço efetivo. Após compactar, adicione uma atualização nova com o valor desejado. Isso não produz uma comparação independente e isolada: o histórico é compartilhado deliberadamente.
 
-Source: [Change reasoning mid-conversation](https://developers.openai.com/api/docs/guides/reasoning#change-reasoning-mid-conversation).
+Fonte: [Mudar o raciocínio durante a conversa](https://developers.openai.com/api/docs/guides/reasoning#change-reasoning-mid-conversation).
 
-## 7. Give each subagent a different question
+## 7. Dê uma pergunta diferente a cada subagente
 
-**The nugget:** Delegation is useful when independent research lanes can advance simultaneously. Astra's guide says it may delegate less than desired unless told when to do so. In Ultra's preserved run, the three specialist lanes added 7.12M processed tokens; they were not a free research team.
+**Ideia principal:** delegar é útil quando frentes independentes de pesquisa podem avançar simultaneamente. O guia citado de Astra diz que ele pode delegar menos que o desejado se não receber instruções sobre quando fazê-lo. Na execução preservada de Ultra, três frentes especializadas acrescentaram 7,12 milhões de tokens processados; não foram uma equipe de pesquisa gratuita.
 
 ```text
-Use up to three subagents for independent questions: one for customer pain evidence, one for competing products, and one for reasons this idea could fail. Give each a bounded deliverable with direct sources. Keep the product decision and synthesis with the main agent. Avoid duplicate searches. If there is no useful independent work, continue without delegation.
+Use até três subagentes para perguntas independentes: um para evidências de dores dos clientes, um para produtos concorrentes e um para motivos pelos quais a ideia pode falhar. Dê a cada um uma entrega delimitada com fontes diretas. Mantenha a decisão de produto e a síntese com o agente principal. Evite pesquisas duplicadas. Se não houver trabalho independente útil, continue sem delegar.
 ```
 
-**Boundary:** More agents are not automatically cheaper or better. Record their models and include their usage. This is a workflow suggestion, not a universal performance result.
+**Limite:** mais agentes não são automaticamente mais baratos ou melhores. Registre modelos e inclua seu consumo. É uma sugestão de fluxo, não um resultado universal de desempenho.
 
-Sources: [Astra subagent delegation](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#subagent-delegation); `evidence/PRODUCER-CHECKS.md`, Ultra section.
+Fontes: [Delegação a subagentes no Astra](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra#subagent-delegation); seção Ultra de [evidence/PRODUCER-CHECKS.md](evidence/PRODUCER-CHECKS.md).
 
-## 8. Use Grok to find the objection you would rather miss
+## 8. Use Grok para encontrar a objeção que você preferiria não ver
 
-**The nugget:** Instead of asking Grok for “best ideas,” ask it to locate people already solving the proposed pain with cheap software or AI. Scopekeep's research surfaced a roofing owner's claim that Grok plus an open-source tool handled change orders. That is relevant counter-evidence for a change-order SaaS.
+**Ideia principal:** em vez de pedir “as melhores ideias” a Grok, peça pessoas que já resolvem a dor proposta com software barato ou IA. A pesquisa de Scopekeep encontrou a afirmação de um dono de empresa de telhados de que Grok e uma ferramenta de código aberto já atendiam às solicitações de alteração de serviços. É uma evidência contrária relevante para um SaaS desse tipo.
 
 ```text
-I'm evaluating [product] for [specific customer]. Find recent firsthand posts on X showing how these customers already solve [pain], especially with spreadsheets, incumbent software or AI. Prioritize evidence that could make this product unnecessary. Return direct post links, dates, the actual workaround and what each source does and does not establish. Do not invent buyer demand from likes. If a source cannot be opened, say so.
+Estou avaliando [produto] para [cliente específico]. Encontre publicações recentes de primeira mão no X mostrando como esses clientes já resolvem [dor], especialmente com planilhas, software estabelecido ou IA. Priorize evidências que possam tornar este produto desnecessário. Retorne links diretos, datas, a solução realmente usada e o que cada fonte comprova ou não. Não invente demanda de compra a partir de curtidas. Se uma fonte não abrir, informe isso.
 ```
 
-Follow-up in Codex:
+Acompanhamento no Codex:
 
 ```text
-Open the cited originals. Which claims survive verification? Revise the opportunity around what customers still struggle with after using these workarounds. Separate a feature that can be copied from a defensibility hypothesis that needs validation.
+Abra os originais citados. Quais afirmações resistem à verificação? Revise a oportunidade com base nas dificuldades que os clientes ainda enfrentam depois de usar essas soluções. Separe uma funcionalidade copiável de uma hipótese de vantagem defensável que precisa de validação.
 ```
 
-**Boundary:** Grok responses are research leads. That historical X example was read by the participant, but the producer could not independently reopen it; do not present it as newly verified here. Customer complaints are not proof of willingness to pay or a durable moat.
+**Limite:** respostas de Grok são pistas de pesquisa. O exemplo histórico do X foi lido pelo participante, mas o produtor não conseguiu reabri-lo de forma independente; não o apresente como verificado novamente aqui. Reclamações não provam disposição para pagar nem vantagem competitiva duradoura.
 
-Source: `evidence/PRODUCER-CHECKS.md`, XHigh section. Method is an original editorial recommendation.
-
+Fonte: seção XHigh de [evidence/PRODUCER-CHECKS.md](evidence/PRODUCER-CHECKS.md). O método é uma recomendação editorial original.

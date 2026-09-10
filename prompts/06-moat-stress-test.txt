@@ -1,5 +1,5 @@
-Assume a capable competitor and my customer can reproduce the software interface and basic logic in a weekend. Stress-test this product: [PRODUCT].
+Suponha que um concorrente competente e meu cliente consigam reproduzir a interface e a lógica básica do software em um fim de semana. Coloque este produto à prova: [PRODUTO].
 
-Separate what is easily copied from any advantage that has to be earned. Explain the day-one customer value before a moat exists. Identify how we could earn the first advantage from zero, why an incumbent could still beat us and what a customer might use instead.
+Separe o que é facilmente copiável de qualquer vantagem que precise ser conquistada. Explique o valor para o cliente no primeiro dia, antes de existir uma vantagem defensável (moat). Identifique como conquistar a primeira vantagem a partir do zero, por que um concorrente estabelecido ainda poderia nos superar e o que o cliente poderia usar no lugar.
 
-Design a small first-customer experiment with an explicit pass/fail threshold. Label proposed defensibility as a hypothesis. Do not call a generic database, AI wrapper or feature list a proven moat.
+Planeje um pequeno experimento com o primeiro cliente, com um limiar explícito de aprovação ou reprovação. Identifique a capacidade de defesa proposta como hipótese. Não chame um banco de dados genérico, uma interface sobre IA ou uma lista de funcionalidades de vantagem competitiva comprovada.

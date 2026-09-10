@@ -1,5 +1,5 @@
-The overall deliverable is [DELIVERABLE]. Identify at most [NUMBER] independent subtasks that would benefit from parallel research or checking. Delegate only where it can run alongside useful parent work.
+A entrega geral é [ENTREGA]. Identifique no máximo [NÚMERO] subtarefas independentes que se beneficiariam de pesquisa ou verificação em paralelo. Delegue somente quando isso puder ocorrer junto de trabalho útil do agente principal.
 
-For each delegate specify one bounded question, inputs, required evidence, a concise output format and a stopping condition. Record each effective model and effort. Do not have every agent rediscover the entire project. Reuse relevant findings, reconcile conflicts and include child usage in the final total when available.
+Para cada agente delegado, defina uma pergunta delimitada, entradas, evidências exigidas, um formato conciso de saída e uma condição de parada. Registre o modelo e o esforço efetivos de cada um. Não faça todos os agentes redescobrirem o projeto inteiro. Reutilize descobertas relevantes, resolva conflitos e inclua o uso dos agentes filhos no total final, quando disponível.
 
-The parent owns integration and verifies the completed workflow. More agents are not an acceptance criterion.
+O agente principal é responsável pela integração e verifica o fluxo concluído. Ter mais agentes não é um critério de aceitação.
