@@ -18,6 +18,8 @@ O projeto reúne a tradução do kit e materiais complementares enviados pelo us
 
 Medium foi a preferência inicial do autor **para esta tarefa de pesquisa e construção**. Tempos são observações individuais; tokens processados incluem entrada em cache e **não representam custo financeiro**. Ultra foi a condição com delegação habilitada.
 
+**Ver também:** [Esforço na prática](https://inematds.github.io/modelos/guia/esforco/), no repositório `modelos`. A página cruza estes dados com um teste do Claude Opus 5.5 por nível de esforço. É uma referência externa e não altera esta tradução.
+
 ## Biblioteca
 
 | Caminho | Conteúdo e idioma |
