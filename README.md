@@ -1,5 +1,7 @@
 # Astra Effort — guia em português
 
+**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
 [![Astra Effort: níveis de esforço na prática](capa/capa.png)](https://inematds.github.io/astra-effort/guia/)
 
 **[Abrir o guia de uso](https://inematds.github.io/astra-effort/guia/)** · **[Ler o guia completo](https://inematds.github.io/astra-effort/guia/leitura.html)** · **[Baixar o PDF em português](Astra-Effort-Guia-pt-BR.pdf)**
